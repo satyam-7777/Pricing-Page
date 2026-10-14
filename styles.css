@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
 /* css reset */
 
 *,
@@ -16,9 +17,11 @@ body {
   justify-content: center;
   min-height: 100vh;
   padding: 20px 12px;
-  font-family: Arial, sans-serif;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
   background-color: #f0f0f0;
-  color: #494c5f;
+  color: hsl(233, 13%, 49%);
 }
 
 .container {
@@ -31,7 +34,7 @@ body {
   padding: 30px;
   margin: 0 auto;
   text-align: center;
-  background-color: #f7f7ff;
+  background-color: hsl(240, 78%, 98%);
   background-image: url("./images/bg-top.svg"), url("./images/bg-bottom.svg");
   background-repeat: no-repeat, no-repeat;
   background-position:
@@ -41,7 +44,7 @@ body {
 
 .page-title {
   font-size: 22px;
-  color: #626582;
+  color: hsl(233, 13%, 49%);
 }
 
 .plan-toggle {
@@ -52,18 +55,18 @@ body {
   margin-bottom: 20px;
   font-size: 12px;
   font-weight: 600;
-  color: #a5a7b9;
+  color: hsl(234, 14%, 74%);
 }
 
 .plan-toggle span {
   font-weight: normal;
 }
 
-.plan-toggle .active {
+/* .plan-toggle .active {
   font-weight: bold;
   font-size: 18px;
   color: #696cdd;
-}
+} */
 
 .toggle-btn {
   width: 42px;
@@ -71,7 +74,7 @@ body {
   padding: 3px;
   border: none;
   border-radius: 20px;
-  background-color: #9999e8;
+  background: linear-gradient(135deg, hsl(236, 72%, 79%), hsl(237, 63%, 64%));
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -88,8 +91,12 @@ body {
   transition: transform 0.25s ease;
 }
 
-.toggle-btn[aria-pressed="true"] .toggle-circle {
+.toggle-btn[aria-pressed="false"] .toggle-circle {
   transform: translateX(20px);
+}
+
+.toggle-btn[aria-pressed="true"] .toggle-circle {
+  transform: translateX(0);
 }
 
 .card-container {
@@ -98,14 +105,14 @@ body {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   align-items: stretch;
-  gap: 20px;
+  gap: 30px;
 }
 
 .card {
   width: 100%;
   min-width: 280px;
   min-height: auto;
-  padding: 30px 20px;
+  padding: 35px 30px 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -121,13 +128,13 @@ body {
 
 .card h2 {
   font-size: 15px;
-  color: #626582;
+  color: hsl(233, 13%, 49%);
   transition: color 0.3s ease;
 }
 
 .card strong {
   font-size: 36px;
-  color: #494c5f;
+  color: hsl(232, 13%, 33%);
   transition: color 0.3s ease;
 }
 
@@ -138,8 +145,9 @@ body {
 }
 
 .price .currency {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: bold;
+  color: hsl(232, 13%, 33%);
 }
 
 .feature-list {
@@ -150,12 +158,17 @@ body {
 .feature-list li {
   padding: 13px 0;
   border-top: 1px solid #e5e5e5;
+  border-bottom: none;
   font-size: 12px;
   font-weight: 600;
   color: #626582;
   transition:
     color 0.3s ease,
     border-color 0.3s ease;
+}
+
+.feature-list li:last-child {
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .more-btn {
@@ -165,24 +178,30 @@ body {
 .more-btn button {
   width: 100%;
   padding: 12px 8px;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 4px;
-  background: linear-gradient(135deg, #a3a5e9, #696cdd);
+  background: linear-gradient(135deg, hsl(236, 72%, 79%), hsl(237, 63%, 64%));
   color: white;
   font-size: 11px;
+  text-transform: uppercase;
   font-weight: bold;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   cursor: pointer;
   transition:
     background 0.3s ease,
     color 0.3s ease;
 }
 
+.more-btn button:hover {
+  background: white;
+  color: hsl(237, 63%, 64%);
+  border-color: hsl(237, 63%, 64%);
+}
+
 .card.active-card {
-  cursor: pointer;
   position: relative;
   z-index: 2;
-  background: linear-gradient(135deg, #a3a5e9, #696cdd);
+  background: linear-gradient(135deg, hsl(236, 72%, 79%), hsl(237, 63%, 64%));
   box-shadow: 0 15px 30px rgba(105, 108, 221, 0.25);
 }
 
@@ -204,6 +223,12 @@ body {
   color: #696cdd;
 }
 
+.card.active-card .more-btn button:hover {
+  background: none;
+  color: white;
+  border-color: white;
+}
+
 /* tablet related style */
 
 @media (min-width: 768px) {
@@ -217,11 +242,11 @@ body {
 
   .card-container {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 25px;
+    gap: 30px;
   }
 
   .card {
-    padding: 30px 20px;
+    padding: 35px 30px 15px;
   }
 }
 
@@ -229,17 +254,17 @@ body {
 
 @media (min-width: 1024px) {
   .container {
-    padding: 50px;
+    max-width: 1440px;
+    padding: 80px;
   }
 
   .card-container {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 30px;
+    gap: 0px;
   }
 
   .card {
-    min-height: 380px;
-    padding: 35px 30px;
+    padding: 35px 32px 15px;
   }
 
   .card strong {
@@ -247,6 +272,21 @@ body {
   }
 
   .card.active-card {
-    transform: translateY(-10px) scale(1.03);
+    transform: none;
+    height: auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .card.active-card::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    bottom: -20px;
+    left: 0;
+    right: 0;
+    background: inherit;
+    border-radius: inherit;
+    z-index: -1;
   }
 }
